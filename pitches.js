@@ -24,10 +24,10 @@ var pitches = (function () {
                 cents = cents - 100;
                 pitch_class = pitch_class + 1;
             }
-            return { 'hz' : hz,
-                     'pitch_class' : pitches[pitch_class],
-                     'octave' : octave,
-                     'cents' : cents
+            return { hz : hz,
+                     pitch_class : pitches[pitch_class],
+                     octave : octave,
+                     cents : cents
                    };
         },
         hz_to_pitch = function (hz) {
@@ -50,8 +50,8 @@ var pitches = (function () {
             steps = octave * 12 + pitch_indexes[pitch_class] + cents / 100;
             hz = Math.pow(half_step, steps + adjustment);
             return {
-                'pitch_data' : pitch_data,
-                'hz' : hz
+                pitch_data : pitch_data,
+                hz : hz
             };
         },
         hz_scale = function (steps, base) {
@@ -71,9 +71,9 @@ var pitches = (function () {
                     return result;
                 };
             return {
-                'take' : take,
-                'steps' : steps,
-                'base' : base
+                take : take,
+                steps : steps,
+                base : base
             };
         },
         scale = function (steps, base, count) {
@@ -107,17 +107,17 @@ var pitches = (function () {
             whole_step
         ];
     return {
-        'half_step' : half_step,
-        'half_steps' : half_steps,
-        'pitches' : pitches,
-        'signum' : signum,
-        'steps_data' : steps_data,
-        'hz_to_pitch' : hz_to_pitch,
-        'hz_scale' : hz_scale,
-        'scale' : scale,
-        'major_steps' : major_steps,
-        'minor_steps' : minor_steps,
-        'pitchdata_to_hz' : pitchdata_to_hz
+        half_step : half_step,
+        half_steps : half_steps,
+        pitches : pitches,
+        signum : signum,
+        steps_data : steps_data,
+        hz_to_pitch : hz_to_pitch,
+        hz_scale : hz_scale,
+        scale : scale,
+        major_steps : major_steps,
+        minor_steps : minor_steps,
+        pitchdata_to_hz : pitchdata_to_hz
     };
 }());
 
