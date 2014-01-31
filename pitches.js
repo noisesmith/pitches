@@ -11,10 +11,9 @@ var pitches = (function () {
             return Math.log(n) / half_step_log;
         },
         // because 0 pitch class is not mapped to a power of 2 hz
-        adjustment = 36.37631656229583,
+        adjustment = 48.37631656229583,
         pitches = [ 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C'],
         /* - is printed already for negative */
-        signum = function (n) { return (n < 0) ? '' : '+'; },
         steps_data = function (hz) {
             var steps = half_steps(hz) - adjustment,
                 pch = steps / 12,
@@ -33,8 +32,15 @@ var pitches = (function () {
                    };
         },
         hz_to_pitch = function (hz) {
-            var result = steps_data(hz);
-            return result.pitch_class + result.octave + signum(result.cents) + result.cents;
+            var result = steps_data(hz),
+                pitch = result.pitch_class,
+                octave = result.octave,
+                cents = Math.floor(result.cents),
+                sign = (cents < 0) ? '-' : '+';
+            cents = Math.abs(cents);
+            cents = cents + "";
+            cents = (cents.length === 1) ? ("0" + cents) : cents;
+            return pitch + result.octave + ' ' + sign + ' ' + cents;
         },
         pitch_indexes = (function () {
             var i, result = {};
@@ -112,7 +118,6 @@ var pitches = (function () {
         half_step : half_step,
         half_steps : half_steps,
         pitches : pitches,
-        signum : signum,
         steps_data : steps_data,
         hz_to_pitch : hz_to_pitch,
         hz_scale : hz_scale,
