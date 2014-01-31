@@ -1,5 +1,5 @@
 /*global require, describe, it */
-// designed for node
+// designed for node, mocha unit testing
 
 "use strict";
 

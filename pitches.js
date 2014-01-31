@@ -128,6 +128,8 @@ var pitches = (function () {
     };
 }());
 
+exports.pitches = pitches;
+
 // phantom.page.injectJs('./pitches.js');
 
 /*
