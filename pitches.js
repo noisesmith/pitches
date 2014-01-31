@@ -1,3 +1,5 @@
+/*global exports */
+
 "use strict";
 
 var pitches = (function () {
